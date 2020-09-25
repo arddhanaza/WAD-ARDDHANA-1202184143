@@ -34,13 +34,14 @@
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="nama">Nama</label>
                     <div class="col-sm-9">
-                        <input class="form-control" id="nama" placeholder="Nama Anda..." type="text">
+                        <input class="form-control" id="nama" placeholder="Nama Anda..." type="text" value="Nama">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="nomorhp">Nomor HP</label>
                     <div class="col-sm-9">
-                        <input class="form-control" id="nomorhp" placeholder="Nomor HP Anda" type="number">
+                        <input class="form-control" id="nomorhp" placeholder="Nomor HP Anda" type="number"
+                               value="NomorHP">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -52,10 +53,10 @@
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="pembayaran">Pembayaran</label>
                     <div class="col-sm-9" id="pembayaran">
-                        <input id="pembayarancash" name="pembayaran" type="radio">
+                        <input id="pembayarancash" name="pembayaran" type="radio" value="Cash">
                         <label for="pembayarancash">Cash</label>
 
-                        <input id="pembayarancredit" name="pembayaran" type="radio">
+                        <input id="pembayarancredit" name="pembayaran" type="radio" value="Credit">
                         <label for="pembayarancredit">Credit</label>
                     </div>
                 </div>
@@ -63,9 +64,9 @@
                     <label class="col-sm-3 col-form-label" for="kategori">Pembayaran</label>
                     <div class="col-sm-9">
                         <select class="form-control" id="kategori" name="kategori">
-                            <option value="Komputer">Komputer</option>
-                            <option value="Keyboard">Keyboard</option>
-                            <option value="Mouse">Mouse</option>
+                            <option id="kategoriKomputer" value="Komputer">Komputer</option>
+                            <option id="kategoriKeyboard" value="Keyboard">Keyboard</option>
+                            <option id="kategoriMouse" value="Mouse">Mouse</option>
                         </select>
                     </div>
                 </div>
