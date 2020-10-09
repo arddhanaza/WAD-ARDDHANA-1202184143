@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Check Ouut</title>
@@ -13,15 +12,15 @@
     <a class="navbar-brand" href="home.html"><img alt="" id="logo-nav" src="assets/img/logo-ead.png"></a>
     <ul class="navbar-nav">
         <li class="nav-item">
-            <a class="nav-link" href="">Home </a>
+            <a class="nav-link" href="home.php">Home </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="">Booking</a>
+            <a class="nav-link" href="book.php">Booking</a>
         </li>
     </ul>
 </nav>
 <section class="container mt-5">
-    <table class="table table-striped">
+    <table class="table">
         <thead>
         <tr>
             <th>Booking Number</th>
@@ -36,14 +35,62 @@
         </thead>
         <tbody>
         <tr>
-            <td>4563345</td>
-            <td>Name</td>
-            <td>Check In</td>
-            <td>Check Out</td>
-            <td>Room Type</td>
-            <td>Phone Number</td>
-            <td>Service</td>
-            <td>Total Price</td>
+            <?php
+
+            if (isset($_POST['nama'])) {
+                $nama = $_POST['nama'];
+                $check_in_date = $_POST['checkindate'];
+                $duration = $_POST['duration'];
+                $room_type = $_POST['roomtype'];
+                $phonenumber = $_POST['phonenumber'];
+
+                $add_date = new DateTime($check_in_date);
+                $add_date->modify('' . $duration . ' day');
+                $checkout = $add_date->format('d-m-Y');
+                if ($room_type == "Standard") {
+                    $price = 90;
+                    $price = $price * $duration;
+                } elseif ($room_type == "Superior") {
+                    $price = 150;
+                    $price = $price * $duration;
+                } else {
+                    $price = 200;
+                    $price = $price * $duration;
+                }
+
+                if ((isset($_POST['roomservice']))) {
+                    $roomservices = $_POST['roomservice'];
+                    $final_price = $price + (20 * count($roomservices));
+                } else {
+                    $roomservices = null;
+                    $final_price = $price;
+                }
+            } else {
+                header("Location: home.php");
+            }
+            ?>
+            <td><?php echo rand(min([11111]), max([99999])) ?></td>
+            <td><?php echo $nama ?></td>
+            <td><?php echo $check_in_date; ?></td>
+            <td><?php echo $checkout ?></td>
+            <td><?php echo $room_type ?></td>
+            <td><?php echo $phonenumber ?></td>
+            <td>
+                <ul>
+                    <?php
+                    if ((isset($roomservices))) {
+                        foreach ($roomservices as $room) {
+                            echo '
+                            <li>' . $room . '</li>            
+                        ';
+                        }
+                    } else {
+                        echo '<li>Not Assigned</li>';
+                    }
+                    ?>
+                </ul>
+            </td>
+            <td><?php echo $final_price ?></td>
         </tr>
         </tbody>
     </table>

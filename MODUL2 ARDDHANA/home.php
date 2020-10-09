@@ -20,10 +20,10 @@ $kamar = array(
     <a class="navbar-brand" href="home.html"><img alt="" id="logo-nav" src="assets/img/logo-ead.png"></a>
     <ul class="navbar-nav">
         <li class="nav-item active">
-            <a class="nav-link" href="">Home </a>
+            <a class="nav-link" href="home.php">Home </a>
         </li>
         <li class="nav-item ">
-            <a class="nav-link" href="">Booking</a>
+            <a class="nav-link" href="book.php">Booking</a>
         </li>
     </ul>
 </nav>
@@ -66,9 +66,9 @@ $kamar = array(
                         </table>
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">
-                            Book Now
-                        </button>
+                    <form action="book.php" method="post">
+                        <button type="submit" class="btn btn-primary" name="Tipe" value="' . $kamar[$row]["tipe"] . '">Book Now</button>
+                    </form>
                     </div>
                 </div>
             </div>    
