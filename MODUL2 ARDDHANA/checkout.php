@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Check Ouut</title>
+    <title>Check Out</title>
     <link href="assets/css/bootstrap.css" rel="stylesheet">
     <link href="assets/css/custom.css" rel="stylesheet">
 </head>
@@ -85,7 +85,7 @@
                         ';
                         }
                     } else {
-                        echo '<li>Not Assigned</li>';
+                        echo '<li>No Service</li>';
                     }
                     ?>
                 </ul>
