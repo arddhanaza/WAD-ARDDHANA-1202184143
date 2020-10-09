@@ -69,7 +69,7 @@
                 header("Location: home.php");
             }
             ?>
-            <td><?php echo rand(min([11111]), max([99999])) ?></td>
+            <td><b><?php echo rand(min([11111]), max([99999])) ?></b></td>
             <td><?php echo $nama ?></td>
             <td><?php echo $check_in_date; ?></td>
             <td><?php echo $checkout ?></td>
