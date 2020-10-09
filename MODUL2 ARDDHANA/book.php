@@ -33,7 +33,7 @@
                     <input type="date" class="form-inline form-control" name="checkindate" id="checkindate" required>
                 </div>
                 <div class="form-group">
-                    <label for="duration">Check In</label>
+                    <label for="duration">Duration</label>
                     <input type="number" class="form-inline form-control" name="duration" id="duration" required>
                     <span>Day(s)</span>
                 </div>
