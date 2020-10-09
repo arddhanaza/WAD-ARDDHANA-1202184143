@@ -8,7 +8,6 @@ $kamar = array(
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Home</title>
@@ -38,19 +37,19 @@ $kamar = array(
         <?php
         for ($row = 0; $row < count($kamar); $row++) {
             echo '
-            <div class="col-lg-4 col-md-4 col-sm-12">
+            <div class="col-lg-4 col-md-4 col-sm-12 my-2">
                 <div class="card text-center">
                     <div class="card-img-top" style="overflow: hidden">
                         <img src="assets/img/' . $kamar[$row]["image"] . '" alt="" style="object-fit: cover !important; width: 500px;">
                     </div>
                     <div class="card-header">
-                        <h3>' . $kamar[$row]["tipe"] . '</h3>
+                        <h4>' . $kamar[$row]["tipe"] . '</h4>
                         <h5>$ ' . $kamar[$row]["harga"] . '/ Day</h5>
                     </div>
                     <div class="card-body">
-                        <table class="table table-striped">
+                        <table class="table">
                             <thead>
-                            <tr>
+                            <tr class="bg-light">
                                 <th>Facilities</th>
                             </tr>
                             </thead>

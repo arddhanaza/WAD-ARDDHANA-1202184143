@@ -89,7 +89,27 @@
             </form>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-12">
-            <img src="assets/img/img1.jpg" alt="" style="width: 500px">
+            <?php
+            if (isset($_POST['Tipe'])) {
+                if ($tipe_selected == "Standard") {
+                    echo '
+                        <img src="assets/img/img1.jpg" alt="" style="width: 500px">        
+                    ';
+                } elseif ($tipe_selected == "Superior") {
+                    echo '
+                        <img src="assets/img/img2.jpg" alt="" style="width: 500px">        
+                    ';
+                } else {
+                    echo '
+                        <img src="assets/img/img3.jpg" alt="" style="width: 500px">        
+                    ';
+                }
+            } else {
+                echo '
+              <img src="assets/img/img1.jpg" alt="" style="width: 500px">
+              ';
+            }
+            ?>
         </div>
     </div>
 </section>
