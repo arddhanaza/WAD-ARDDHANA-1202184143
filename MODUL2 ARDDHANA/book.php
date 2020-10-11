@@ -30,11 +30,13 @@
                 </div>
                 <div class="form-group">
                     <label for="checkindate">Check In</label>
-                    <input type="date" class="form-inline form-control" name="checkindate" id="checkindate" required>
+                    <input type="date" class="form-inline form-control" name="checkindate" id="checkindate" required
+                           min="<?php echo date("Y-m-d") ?>">
                 </div>
                 <div class="form-group">
                     <label for="duration">Duration</label>
-                    <input type="number" class="form-inline form-control" name="duration" id="duration" required>
+                    <input type="number" class="form-inline form-control" name="duration" id="duration" required
+                           min="1">
                     <span>Day(s)</span>
                 </div>
                 <div class="form-group">

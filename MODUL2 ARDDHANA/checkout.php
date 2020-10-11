@@ -46,7 +46,7 @@
 
                 $add_date = new DateTime($check_in_date);
                 $add_date->modify('' . $duration . ' day');
-                $checkout = $add_date->format('d-m-Y');
+                $checkout = $add_date->format('Y-m-d');
                 if ($room_type == "Standard") {
                     $price = 90;
                     $price = $price * $duration;
@@ -60,7 +60,7 @@
 
                 if ((isset($_POST['roomservice']))) {
                     $roomservices = $_POST['roomservice'];
-                    $final_price = $price + (20 * count($roomservices));
+                    $final_price = $price + ((20 * count($roomservices)) * $duration);
                 } else {
                     $roomservices = null;
                     $final_price = $price;
