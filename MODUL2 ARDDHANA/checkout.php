@@ -37,7 +37,7 @@
         <tr>
             <?php
 
-            if (isset($_POST['nama'])) {
+            if (isset($_GET['nama'])) {
                 $nama = $_POST['nama'];
                 $check_in_date = $_POST['checkindate'];
                 $duration = $_POST['duration'];
