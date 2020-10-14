@@ -1,8 +1,8 @@
 <?php
 $kamar = array(
-    array("image" => "img1.jpg", "tipe" => "Standard", "harga" => 90, "facilities" => array("1 Single Bed", "1 Bathroom")),
-    array("image" => "img2.jpg", "tipe" => "Superior", "harga" => 150, "facilities" => array("1 Double Bed", "1 Television and WI-FI", "1 Bathroom with Hot Water")),
-    array("image" => "img3.jpg", "tipe" => "Luxury", "harga" => 200, "facilities" => array("2 Double Bed", "2 Bathroom with Hot Water", "1 Kitchen", "1 Television and WI-FI", "1 Workroom")),
+    array("image" => "img1.jpg", "tipe" => "Standard", "hargakamar" => 90, "facilities" => array("1 Single Bed", "1 Bathroom")),
+    array("image" => "img2.jpg", "tipe" => "Superior", "hargakamar" => 150, "facilities" => array("1 Double Bed", "1 Television and WI-FI", "1 Bathroom with Hot Water")),
+    array("image" => "img3.jpg", "tipe" => "Luxury", "hargakamar" => 200, "facilities" => array("2 Double Bed", "2 Bathroom with Hot Water", "1 Kitchen", "1 Television and WI-FI", "1 Workroom")),
 )
 ?>
 <!DOCTYPE html>
@@ -66,7 +66,7 @@ $kamar = array(
                     </div>
                     <div class="card-footer">
                     <form action="book.php" method="post">
-                        <button type="submit" class="btn btn-primary" name="Tipe" value="' . $kamar[$row]["tipe"] . '">Book Now</button>
+                        <button type="submit" class="btn btn-primary" name="submit" value="' . $kamar[$row]["tipe"] . '">Book Now</button>
                     </form>
                     </div>
                 </div>
