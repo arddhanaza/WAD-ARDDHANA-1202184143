@@ -44,7 +44,7 @@ $kamar = array(
                     </div>
                     <div class="card-header">
                         <h4>' . $kamar[$row]["tipe"] . '</h4>
-                        <h5>$ ' . $kamar[$row]["harga"] . '/ Day</h5>
+                        <h5>$ ' . $kamar[$row]["hargakamar"] . '/ Day</h5>
                     </div>
                     <div class="card-body">
                         <table class="table">
@@ -66,7 +66,7 @@ $kamar = array(
                     </div>
                     <div class="card-footer">
                     <form action="book.php" method="post">
-                        <button type="submit" class="btn btn-primary" name="submit" value="' . $kamar[$row]["tipe"] . '">Book Now</button>
+                        <button type="submit" class="btn btn-primary" name="Tipe" value="' . $kamar[$row]["tipe"] . '">Book Now</button>
                     </form>
                     </div>
                 </div>
