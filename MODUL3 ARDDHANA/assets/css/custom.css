@@ -1,0 +1,28 @@
+body {
+  font-family: Serif;
+}
+
+h1, h3, h5 {
+  color: #0069d9;
+}
+
+.card .card-body .row {
+  margin-bottom: 10px;
+}
+.card .card-footer {
+  background-color: transparent;
+}
+
+.navbar-ead-event {
+  background-color: #0069d9;
+}
+
+.fa {
+  color: orange;
+}
+
+label {
+  font-weight: bold;
+}
+
+/*# sourceMappingURL=custom.css.map */
