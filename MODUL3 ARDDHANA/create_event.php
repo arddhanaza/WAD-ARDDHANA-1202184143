@@ -43,13 +43,13 @@ if (isset($_POST['submit'])) {
 </head>
 <body>
 <nav class="navbar navbar-expand navbar-dark navbar-ead-event">
-    <a class="navbar-brand" href="#"><img alt="" id="logo-nav">EAD EVENTS</a>
+    <a class="navbar-brand" href="index.php"><img alt="" id="logo-nav">EAD EVENTS</a>
     <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-            <a class="nav-link" href="#">Home </a>
+            <a class="nav-link" href="index.php">Home </a>
         </li>
         <li class="nav-item active">
-            <a class="nav-link btn btn-outline-light" href="#">Buat Event</a>
+            <a class="nav-link btn btn-outline-light" href="create_event.php">Buat Event</a>
         </li>
     </ul>
 </nav>
@@ -74,17 +74,21 @@ if (isset($_POST['submit'])) {
                         </div>
                         <div class="form-group">
                             <label for="file_upload">Upload Gambar</label>
-                            <input type="file" class="form-control" name="file_upload" required id="file_upload">
+                            <input type="file" class="form-control-file" name="file_upload" required id="file_upload">
                         </div>
-                        <div class="form-group">
-                            <label for="kategori">Kategori</label>
-                            <div class="form-inline" id="kategori">
-                                <input type="radio" class="form-control" name="kategori" required id="kategori_online"
+
+                        <label for="kategori">Kategori</label>
+                        <div class="form-group form-check" id="kategori">
+                            <div class="form-check form-check-inline">
+                                <input type="radio" class="form-check-input" name="kategori" required
+                                       id="kategori_online"
                                        value="Online">
-                                <label for="kategori_online">Online</label>
-                                <input type="radio" class="form-control ml-3" name="kategori" required
+                                <label for="kategori_online" class="form-check-label">Online</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" class="form-check-input ml-3" name="kategori" required
                                        id="kategori_offline" value="Offline">
-                                <label for="kategori_online">Offline</label>
+                                <label for="kategori_offline" class="form-check-label">Offline</label>
                             </div>
                         </div>
                     </div>

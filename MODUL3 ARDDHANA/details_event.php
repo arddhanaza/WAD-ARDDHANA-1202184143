@@ -111,27 +111,52 @@ if (mysqli_num_rows($ress) <= 0) {
                     </div>
                     <div class="card-footer text-right justify-content-center d-flex" style="border: none">
                         <button class="btn btn-primary mr-2" data-toggle="modal" data-target="#modal_edit">Edit</button>
-                        <form action="delete_file.php" method="post">
-                            <button class="btn btn-danger ml-2" type="submit" name="btn_delete" value="' . $item["id"] . '">Delete</button>
-                        </form>
+                        <button class="btn btn-danger ml-2" data-toggle="modal" data-target="#modal_delete">Delete</button>
                     </div>          
-                    ';
+                    
+        </div>
+';
             ?>
         </div>
-
     </div>
-</div>
 
 
-<div class="modal fade" id="modal_edit" tabindex="-1" role="dialog" aria-labelledby="modal_edit" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Edit</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+    <div class="modal fade" id="modal_delete" tabindex="-2" role="dialog" aria-labelledby="modal_delete"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+                    <?php
+                    echo '
+                    <form action="delete_file.php" method="post">
+                        <button class="btn btn-danger ml-2" data-toogle="modal" data-target="modal_delete" type="submit" name="btn_delete" value="' . $item["id"] . '">Yes</button>
+                    </form>
+                ';
+                    ?>
+                </div>
             </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modal_edit" tabindex="-1" role="dialog" aria-labelledby="modal_edit" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Edit</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
             <form action="save_edit.php" method="post" enctype="multipart/form-data">
                 <div class="modal-body">
                     <div class="row">
@@ -153,9 +178,9 @@ if (mysqli_num_rows($ress) <= 0) {
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="file_upload">Upload Gambar</label>
-                                                    <input type="file" class="form-control" name="file_upload" required
-                                                           id="file_upload" value="' . $item["gambar"] . '">
-                                                   <input type="hidden" class="form-control" name="file_lama" value="' . $item["gambar"] . '">
+                                                    <input type="file" class="form-control-file" name="file_upload" required
+                                                           id="file_upload" value="assets/img/' . $item["gambar"] . '">
+                                                   <input type="hidden"  name="file_lama" value="' . $item["gambar"] . '">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="kategori">Kategori</label>

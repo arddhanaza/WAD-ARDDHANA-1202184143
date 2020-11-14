@@ -15,9 +15,11 @@ if (isset($_POST['btn_delete'])) {
     $ress = $conn->query($sql);
     if (mysqli_affected_rows($conn) > 0) {
         echo 'deleted';
-        header("Location index.php");
+        header("Location: index.php");
     } else {
         echo 'failed';
     }
+} else {
+    header("Location: index.php");
 }
 ?>

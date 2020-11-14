@@ -31,5 +31,5 @@ if (isset($_POST['btn_submit'])) {
         echo "gagal";
     }
 } else {
-    header("Loocation index.php");
+    header("Location: index.php");
 }
