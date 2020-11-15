@@ -19,6 +19,11 @@ if (mysqli_num_rows($ress) <= 0) {
     <link href="assets/css/bootstrap.css" rel="stylesheet">
     <link href="assets/css/custom.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/fontawesome/css/font-awesome.min.css">
+    <style>
+        .fa {
+            color: ;
+        }
+    </style>
 </head>
 <body>
 <nav class="navbar navbar-expand navbar-dark navbar-ead-event">
@@ -36,9 +41,10 @@ if (mysqli_num_rows($ress) <= 0) {
     <div class="row justify-content-center">
         <h3>Details Event!</h3>
     </div>
+
     <div class="row"></div>
     <div class="col-12">
-        <div class="card">
+        <div class="card mb-5 border-0 shadow">
             <?php
             while ($item = $ress->fetch_assoc()) {
             echo '
@@ -86,7 +92,7 @@ if (mysqli_num_rows($ress) <= 0) {
                                 <div class="row col-12">
                                     <ul>
                                 ';
-            if (is_null($item["benefit"])) {
+            if (($item["benefit"]) != "null") {
                 foreach (json_decode($item["benefit"]) as $ben) {
                     echo '
                                                 <li>' . $ben . '</li>
@@ -109,9 +115,9 @@ if (mysqli_num_rows($ress) <= 0) {
                             <span><b>HTM Rp ' . $item["harga"] . '</b></span>
                         </div>
                     </div>
-                    <div class="card-footer text-right justify-content-center d-flex" style="border: none">
-                        <button class="btn btn-primary mr-2" data-toggle="modal" data-target="#modal_edit">Edit</button>
-                        <button class="btn btn-danger ml-2" data-toggle="modal" data-target="#modal_delete">Delete</button>
+                    <div class="card-footer text-center" style="border: none">
+                        <button class="btn btn-primary w-25" data-toggle="modal" data-target="#modal_edit">Edit</button>
+                        <button class="btn btn-danger w-25" data-toggle="modal" data-target="#modal_delete">Delete</button>
                     </div>          
                     
         </div>
@@ -148,6 +154,7 @@ if (mysqli_num_rows($ress) <= 0) {
         </div>
     </div>
 
+
     <div class="modal fade" id="modal_edit" tabindex="-1" role="dialog" aria-labelledby="modal_edit" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
@@ -178,8 +185,10 @@ if (mysqli_num_rows($ress) <= 0) {
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="file_upload">Upload Gambar</label>
-                                                    <input type="file" class="form-control-file" name="file_upload" required
-                                                           id="file_upload" value="assets/img/' . $item["gambar"] . '">
+                                                   <div class="custom-file" id="file_upload">
+                                                      <input type="file" class="custom-file-input" name="file_upload" id="customFile">
+                                                      <label class="custom-file-label" for="customFile">' . $item["gambar"] . '</label>
+                                                    </div>
                                                    <input type="hidden"  name="file_lama" value="' . $item["gambar"] . '">
                                                 </div>
                                                 <div class="form-group">
@@ -201,7 +210,7 @@ if (mysqli_num_rows($ress) <= 0) {
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12">
-                                        <div class="card h-100">
+                                        <div class="card h-100 ">
                                             <div class="card-header bg-primary">
                                             </div>
                                             <div class="card-body">
@@ -289,6 +298,7 @@ if (mysqli_num_rows($ress) <= 0) {
                     <button type="submit" name="btn_submit" class="btn btn-primary">Save changes</button>
                 </div>
             </form>
+            </div>
         </div>
     </div>
 </div>
@@ -300,5 +310,10 @@ if (mysqli_num_rows($ress) <= 0) {
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
         crossorigin="anonymous"></script>
+<script !src="">
+    $(document).on('change', '.custom-file-input', function (event) {
+        $(this).next('.custom-file-label').html(event.target.files[0].name);
+    });
+</script>
 </body>
 </html>

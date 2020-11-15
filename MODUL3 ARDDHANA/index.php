@@ -40,7 +40,7 @@ if (mysqli_num_rows($res) > 0) {
             while ($item = $res->fetch_assoc()) {
                 echo '
                     <div class="col-lg-4 col-md-4 col-sm-12 mb-5">
-                        <div class="card h-100">
+                        <div class="card h-100 border-0 shadow">
                             <div class="card-img-top" style="overflow: hidden; height: 300px">
                                 <img src="assets/img/' . $item["gambar"] . '" alt="" style="max-width: 100%;object-position: center;object-fit: cover">
                             </div>

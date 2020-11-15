@@ -74,7 +74,10 @@ if (isset($_POST['submit'])) {
                         </div>
                         <div class="form-group">
                             <label for="file_upload">Upload Gambar</label>
-                            <input type="file" class="form-control-file" name="file_upload" required id="file_upload">
+                            <div class="custom-file" id="file_upload">
+                                <input type="file" class="custom-file-input" name="file_upload" id="customFile">
+                                <label class="custom-file-label" for="customFile">Choose File</label>
+                            </div>
                         </div>
 
                         <label for="kategori">Kategori</label>
@@ -171,7 +174,6 @@ if (isset($_POST['submit'])) {
             </div>
         </div>
     </form>
-
 </div>
 </div>
 
@@ -182,5 +184,10 @@ if (isset($_POST['submit'])) {
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
         crossorigin="anonymous"></script>
+<script !src="">
+    $(document).on('change', '.custom-file-input', function (event) {
+        $(this).next('.custom-file-label').html(event.target.files[0].name);
+    });
+</script>
 </body>
 </html>
