@@ -71,7 +71,7 @@ if (mysqli_num_rows($res) > 0) {
                                 </div>
                             </div>
                             <div class="card-footer text-right">
-                                <a class="btn btn-primary" href="details_event.php?id=' . $item["id"] . '">Details</a>
+                                <a class="btn btn-primary" href="details_event.php?id=' . $item["kategori"] . '">Details</a>
                             </div>
                         </div>
                     </div>
