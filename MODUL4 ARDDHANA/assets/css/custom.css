@@ -1,0 +1,14 @@
+.body-default {
+  background-color: lightcyan;
+}
+
+.bg-default {
+  background-color: lightgray;
+}
+
+.bg-gradient {
+  background: #34c2cd;
+  background: linear-gradient(90deg, #34c2cd 0%, #ffdb8c 100%);
+}
+
+/*# sourceMappingURL=custom.css.map */

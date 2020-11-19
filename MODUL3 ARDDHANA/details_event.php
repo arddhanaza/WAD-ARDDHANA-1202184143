@@ -16,9 +16,9 @@ if (mysqli_num_rows($ress) <= 0) {
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Booking</title>
-    <link href="assets/css/bootstrap.css" rel="stylesheet">
-    <link href="assets/css/custom.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/fontawesome/css/font-awesome.min.css">
+    <link href="../MODUL4%20ARDDHANA/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="../MODUL4%20ARDDHANA/assets/css/custom.css" rel="stylesheet">
+    <link rel="stylesheet" href="../MODUL4%20ARDDHANA/assets/fontawesome/css/font-awesome.min.css">
     <style>
         .fa {
             color: ;

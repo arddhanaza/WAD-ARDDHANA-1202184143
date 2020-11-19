@@ -14,9 +14,9 @@ if (mysqli_num_rows($res) > 0) {
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Booking</title>
-    <link href="assets/css/bootstrap.css" rel="stylesheet">
-    <link href="assets/css/custom.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/fontawesome/css/font-awesome.min.css">
+    <link href="../MODUL4%20ARDDHANA/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="../MODUL4%20ARDDHANA/assets/css/custom.css" rel="stylesheet">
+    <link rel="stylesheet" href="../MODUL4%20ARDDHANA/assets/fontawesome/css/font-awesome.min.css">
 </head>
 <body>
 <nav class="navbar navbar-expand navbar-dark navbar-ead-event">
@@ -71,7 +71,7 @@ if (mysqli_num_rows($res) > 0) {
                                 </div>
                             </div>
                             <div class="card-footer text-right">
-                                <a class="btn btn-primary" href="details_event.php?id=' . $item["kategori"] . '">Details</a>
+                                <a class="btn btn-primary" href="details_event.php?id=' . $item["id"] . '">Details</a>
                             </div>
                         </div>
                     </div>
