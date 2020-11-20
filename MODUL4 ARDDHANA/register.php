@@ -1,3 +1,28 @@
+<?php
+require_once 'UserModel.php';
+if (isset($_SESSION['logged_in'])) {
+    header('location: index.php');
+}
+$register = new UserModel();
+$alert = '';
+if (isset($_POST['submit'])) {
+    $nama = $_POST['nama'];
+    $email = $_POST['email'];
+    $no_hp = $_POST['no_hp'];
+    $password = $_POST['password'];
+    if ($register->register($nama, $email, $no_hp, $password)) {
+        $alert = "Berhasil Registrasi";
+        $_SESSION['message'] = $alert;
+        header("Location: register.php");
+        exit();
+    } else {
+        $alert = "Berhasil Registrasi";
+        $_SESSION['message'] = $alert;
+        header("Location: register.php");
+        exit();
+    }
+}
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -14,17 +39,23 @@
     <a class="navbar-brand" href="index.php"><img alt="" id="logo-nav">WAD Beauty</a>
     <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-            <a class="nav-link" href="index.php">Login</a>
+            <a class="nav-link" href="login.php.php">Login</a>
         </li>
         <li class="nav-item active">
-            <a class="nav-link" href="index.php">Register</a>
+            <a class="nav-link" href="register.php.php">Register</a>
         </li>
     </ul>
 </nav>
 
-<div class="alert alert-warning alert-dismissible fade show" role="alert">
-    Berhasil registasi
-</div>
+<?php
+if (isset($_SESSION['message'])) {
+    echo '<div class="alert alert-warning alert-dismissible fade show" role="alert" id="alert-success">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    ' . $_SESSION["message"] . '
+                  </div>';
+    unset($_SESSION['message']);
+}
+?>
 
 <div class="container h-100 align-content-center p-5">
     <div class="row justify-content-center d-flex h-100">
@@ -34,33 +65,37 @@
                     <h3 class="text-decoration-none">Registrasi</h3>
                 </div>
                 <div class="card-body px-5">
-                    <form action="">
+                    <form action="register.php" method="post">
                         <div class="form-group">
                             <label for="nama">Nama</label>
-                            <input type="text" required class="form-control" name="nama" id="nama">
+                            <input type="text" required class="form-control" name="nama" id="nama"
+                                   placeholder="Masukkan Nama">
                         </div>
                         <div class="form-group">
                             <label for="e-mail">E-mail</label>
-                            <input type="email" required class="form-control" name="email" id="e-mail">
+                            <input type="email" required class="form-control" name="email" id="e-mail"
+                                   placeholder="Masukkan Email">
                         </div>
                         <div class="form-group">
                             <label for="no_hp">No. Handphone</label>
-                            <input type="text" required class="form-control" name="no_hp" id="no_hp">
+                            <input type="number" required class="form-control" name="no_hp" id="no_hp"
+                                   placeholder="Masukkan Nomor Hp">
                         </div>
                         <div class="form-group">
                             <label for="sandi">Kata Sandi</label>
-                            <input type="password" required class="form-control" name="sandi" id="sandi">
+                            <input type="password" required class="form-control" name="password" id="sandi"
+                                   placeholder="Masukkan Password">
                         </div>
                         <div class="form-group">
                             <label for="konfirmasi_sandi">Konfirmasi Kata Sandi</label>
                             <input type="password" required class="form-control" name="konfirmasi_sandi"
-                                   id="konfirmasi_sandi">
+                                   id="konfirmasi_sandi" placeholder="Masukkan Konfirmasi Password">
                         </div>
                         <div class="form-group text-center">
-                            <button class="btn btn-primary" type="button">Daftar</button>
+                            <button class="btn btn-primary" name="submit" type="submit">Daftar</button>
                         </div>
                         <div class="form-group text-center">
-                            <a href="#" class="">Sudah punya akun? Login</a>
+                            <a href="login.php" class="">Sudah punya akun? Login</a>
                         </div>
                     </form>
                 </div>
@@ -76,5 +111,21 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
         crossorigin="anonymous"></script>
+<script !src="">
+    var new_password = document.getElementById("sandi")
+        , confirm_password = document.getElementById("konfirmasi_sandi");
+
+    function validatePassword() {
+        if (new_password.value != confirm_password.value) {
+            confirm_password.setCustomValidity("Passwords Don't Match");
+        } else {
+            confirm_password.setCustomValidity('');
+        }
+    }
+
+    new_password.onchange = validatePassword;
+    confirm_password.onkeyup = validatePassword;
+</script>
+
 </body>
 </html>

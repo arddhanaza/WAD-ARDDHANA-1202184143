@@ -1,3 +1,28 @@
+<?php
+require_once 'UserModel.php';
+if (isset($_SESSION['logged_in'])) {
+    header('location: index.php');
+}
+$login = new UserModel();
+$rememberMe = false;
+if (isset($_POST['btn_login'])) {
+    $email = $_POST['email'];
+    $password = $_POST['sandi'];
+    $rememberMe = isset($_POST['remember_me']);
+    var_dump($login->login($email, $password, $rememberMe));
+    if ($login->login($email, $password, $rememberMe)) {
+        $alert = "Login Berhasil";
+        $_SESSION['message'] = $alert;
+        header('Location: index.php');
+        exit();
+    } else {
+        $alert = "Login Gagal";
+        $_SESSION['message'] = $alert;
+        header('Location: login.php');
+        exit();
+    }
+}
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -13,18 +38,23 @@
 <nav class="navbar navbar-expand navbar-light bg-default">
     <a class="navbar-brand" href="index.php"><img alt="" id="logo-nav">WAD Beauty</a>
     <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
-            <a class="nav-link" href="index.php">Login</a>
-        </li>
         <li class="nav-item">
-            <a class="nav-link" href="index.php">Register</a>
+            <a class="nav-link" href="login.php.php">Login</a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="register.php.php">Register</a>
         </li>
     </ul>
 </nav>
-
-<div class="alert alert-warning alert-dismissible fade show" role="alert">
-    Berhasil Login!
-</div>
+<?php
+if (isset($_SESSION['message'])) {
+    echo '<div class="alert alert-warning alert-dismissible fade show" role="alert" id="alert-success">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    ' . $_SESSION["message"] . '
+                  </div>';
+    unset($_SESSION['message']);
+}
+?>
 <div class="container h-100 align-content-center p-5">
     <div class="row justify-content-center h-100">
         <div class="col-6  justify-content-center align-middle">
@@ -33,25 +63,36 @@
                     <h3 class="text-decoration-none">Login</h3>
                 </div>
                 <div class="card-body px-5">
-                    <form action="">
+                    <?php
+                    if (isset($_COOKIE['email']) && isset($_COOKIE['password'])) {
+                        $saved_email = $_COOKIE['email'];
+                        $saved_password = $_COOKIE['password'];
+                    } else {
+                        $saved_email = "";
+                        $saved_password = "";
+                    }
+                    ?>
+                    <form action="login.php" method="post">
                         <div class="form-group">
                             <label for="e-mail">E-mail</label>
-                            <input type="email" required class="form-control" name="email" id="e-mail">
+                            <input type="email" required class="form-control" name="email" id="e-mail"
+                                   value="<?php echo $saved_email ?>">
                         </div>
                         <div class="form-group">
                             <label for="sandi">Kata Sandi</label>
-                            <input type="password" required class="form-control" name="sandi" id="sandi">
+                            <input type="password" required class="form-control" name="sandi" id="sandi"
+                                   value="<?php echo $saved_password ?>">
                         </div>
                         <div class="form-group">
-                            <input type="checkbox" required class="form-check-inline" name="remember_me"
+                            <input type="checkbox" class="form-check-inline" name="remember_me"
                                    id="remember_me" value="true">
                             <label for="remember_me">Remember Me</label>
                         </div>
                         <div class="form-group text-center">
-                            <button class="btn btn-primary" type="button">Daftar</button>
+                            <button class="btn btn-primary" name="btn_login" type="submit">Login</button>
                         </div>
                         <div class="form-group text-center">
-                            <a href="#" class="">Sudah punya akun? Login</a>
+                            <a href="register.php" class="">Belum punya akun? Registrasi</a>
                         </div>
                     </form>
                 </div>
