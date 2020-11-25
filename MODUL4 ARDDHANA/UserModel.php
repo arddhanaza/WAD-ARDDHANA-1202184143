@@ -3,7 +3,7 @@ session_start();
 
 class UserModel
 {
-    var $host = "localhost:3307";
+    var $host = "localhost:3306";
     var $user = "root";
     var $pass = "";
     var $db = "wad_modul4";
@@ -50,14 +50,14 @@ class UserModel
         } else {
             $update = mysqli_query($this->con, "UPDATE user set email = '$email', no_hp = '$no_hp',password = '$password'");
         }
-        setcookie('theme', $navbar_color, '/WAD-ARDDHANA-1202184143/MODUL4%20ARDDHANA/');
+        setcookie('color', $navbar_color, '/WAD-ARDDHANA-1202184143/MODUL4%20ARDDHANA/');
         return $update;
     }
 
 
     function logOut()
     {
-        session_destroy();
+        session_start();
         header('Location: login.php');
         exit();
     }

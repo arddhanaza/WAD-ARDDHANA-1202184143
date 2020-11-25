@@ -2,7 +2,7 @@
 
 class CartModel
 {
-    var $host = "localhost:3307";
+    var $host = "localhost:3306";
     var $user = "root";
     var $pass = "";
     var $db = "wad_modul4";
@@ -21,7 +21,7 @@ class CartModel
 
     function getItem($user_id)
     {
-        return mysqli_query($this->con, "SELECT * from cart WHERE user_id = '$user_id'");
+        return mysqli_query($this->con, "SELECT * from cart");
     }
 
     function getTotal($user_id)
