@@ -7,7 +7,6 @@
     </div>
     <div class="mt-3">
         <form action="{{route('store_product')}}" method="post" enctype="multipart/form-data">
-            @csrf
             <div class="form-group">
                 <label for="product_name">Product Name</label>
                 <input type="text" name="product_name" id="product_name" class="form-control" required>

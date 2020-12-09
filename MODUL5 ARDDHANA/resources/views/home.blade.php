@@ -1,4 +1,3 @@
-@extends('templates/template')
 @section('title','Home')
 @section('home','active')
 @section('container')

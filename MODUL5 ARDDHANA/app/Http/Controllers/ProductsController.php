@@ -47,8 +47,8 @@ class ProductsController extends Controller
             $request->product_image->storeAs('public',$product_image_name);
             $product->img_path = $product_image_name;
         }
-        $product->save();
         return redirect(route('show_products'));
+	$product->save();
     }
 
     /**
