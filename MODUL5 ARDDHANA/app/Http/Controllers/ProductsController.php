@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Products;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
 
 class ProductsController extends Controller
@@ -11,7 +12,7 @@ class ProductsController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -22,7 +23,7 @@ class ProductsController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -32,8 +33,8 @@ class ProductsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function store(Request $request)
     {
@@ -47,15 +48,16 @@ class ProductsController extends Controller
             $request->product_image->storeAs('public',$product_image_name);
             $product->img_path = $product_image_name;
         }
+        $product->save();
         return redirect(route('show_products'));
-	$product->save();
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Products  $products
-     * @return \Illuminate\Http\Response
+     * @param Products $products
+     * @return Response
      */
     public function show($id)
     {
@@ -65,8 +67,8 @@ class ProductsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Products  $products
-     * @return \Illuminate\Http\Response
+     * @param Products $products
+     * @return Response
      */
     public function edit($id)
     {
@@ -77,9 +79,9 @@ class ProductsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Products  $products
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Products $products
+     * @return Response
      */
     public function update(Request $request, $id)
     {
@@ -101,8 +103,8 @@ class ProductsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Products  $products
-     * @return \Illuminate\Http\Response
+     * @param Products $products
+     * @return Response
      */
     public function destroy($id)
     {
